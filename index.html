@@ -1,0 +1,2440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoAmor - Cuidado de plantas en familia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #2E8B57;
+            --color-primary-light: #3CB371;
+            --color-primary-dark: #1E5A3A;
+            --color-secondary: #F8F9FA;
+            --color-accent: #8FBC8F;
+            --color-dark: #212529;
+            --color-light: #FFFFFF;
+            --color-family-papa: #4A7B9D;
+            --color-family-mama: #D67AB1;
+            --color-family-hermano: #5DA271;
+            --color-family-hermana: #E9A178;
+            --shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-light);
+            color: var(--color-dark);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%232E8B57" stroke-width="0.2" opacity="0.1"/></svg>');
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--color-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            letter-spacing: -1px;
+        }
+
+        .logo i {
+            color: var(--color-primary);
+            margin-right: 12px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-dark);
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+            font-size: 16px;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to bottom right, rgba(46, 139, 87, 0.03), rgba(255, 255, 255, 0.8));
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-quote {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 28px;
+            font-style: italic;
+            color: var(--color-primary-dark);
+            margin-bottom: 40px;
+            line-height: 1.4;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .hero-quote:before, .hero-quote:after {
+            content: """;
+            font-size: 60px;
+            color: var(--color-primary-light);
+            opacity: 0.2;
+            position: absolute;
+            line-height: 1;
+        }
+
+        .hero-quote:before {
+            top: -30px;
+            left: -10px;
+        }
+
+        .hero-quote:after {
+            bottom: -50px;
+            right: -10px;
+            transform: rotate(180deg);
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            color: var(--color-dark);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #555;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-primary-dark);
+            color: var(--color-light);
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            background-color: var(--color-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(46, 139, 87, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--color-primary-dark);
+            color: var(--color-primary-dark);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-primary-dark);
+            color: var(--color-light);
+            box-shadow: none;
+        }
+
+        /* Features Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--color-dark);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--color-primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--color-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            padding: 40px 25px;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 28px;
+            color: var(--color-primary-dark);
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--color-dark);
+        }
+
+        /* Plant Identification */
+        .plant-id {
+            background-color: var(--color-secondary);
+        }
+
+        .id-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .id-image {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--color-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+            border: 1px dashed var(--color-primary);
+            position: relative;
+        }
+
+        .id-image-preview {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #preview-img {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+
+        .id-image-placeholder {
+            text-align: center;
+            color: #888;
+        }
+
+        .id-image-placeholder i {
+            font-size: 60px;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .id-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            width: 100%;
+        }
+
+        .id-actions button {
+            flex: 1;
+        }
+
+        .btn-secondary {
+            background-color: var(--color-primary);
+            color: var(--color-light);
+        }
+
+        .id-results {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .result-card {
+            background: var(--color-light);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .result-card h4 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--color-primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .plant-sci-name {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+            display: block;
+            font-size: 16px;
+        }
+
+        .care-tips h5 {
+            font-size: 18px;
+            margin: 20px 0 15px;
+            color: var(--color-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .care-tips ul {
+            list-style: none;
+            padding-left: 5px;
+        }
+
+        .care-tips li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .care-tips li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--color-primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Search Section */
+        .search-section {
+            background-color: rgba(46, 139, 87, 0.05);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(46, 139, 87, 0.1);
+        }
+        
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-box {
+            display: flex;
+            gap: 10px;
+        }
+        
+        #plant-search {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid var(--color-primary-light);
+            border-radius: 30px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        #plant-search:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.2);
+        }
+        
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+        
+        .suggestion-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .suggestion-item:hover {
+            background-color: var(--color-secondary);
+        }
+        
+        .suggestion-item i {
+            color: var(--color-primary);
+            font-size: 18px;
+        }
+        
+        /* Calendar Minimalista */
+        .minimal-calendar {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .calendar-header-minimal {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: var(--color-primary-dark);
+            color: white;
+        }
+
+        .calendar-nav-minimal {
+            display: flex;
+            gap: 10px;
+        }
+
+        .calendar-nav-minimal button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .calendar-nav-minimal button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .month-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 25px;
+        }
+
+        .month-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            position: relative;
+        }
+
+        .month-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .month-header {
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--color-primary-dark);
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .month-grid-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+        }
+
+        .day-header {
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            padding: 5px 0;
+            text-transform: uppercase;
+        }
+
+        .calendar-day-minimal {
+            text-align: center;
+            padding: 8px 0;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .calendar-day-minimal:hover {
+            background-color: rgba(46, 139, 87, 0.1);
+        }
+
+        .calendar-day-minimal.today {
+            background-color: var(--color-primary);
+            color: white;
+            font-weight: bold;
+        }
+
+        .calendar-day-minimal.has-tasks:after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background-color: var(--color-primary);
+            border-radius: 50%;
+        }
+
+        .calendar-day-minimal.weekend {
+            color: #999;
+        }
+
+        /* Modal de Tareas */
+        .task-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #777;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--color-primary);
+        }
+
+        .task-header {
+            margin-bottom: 20px;
+            color: var(--color-primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .task-header i {
+            font-size: 24px;
+        }
+
+        .task-list {
+            margin-bottom: 25px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .task-item {
+            background: var(--color-secondary);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            border-left: 3px solid var(--color-primary);
+        }
+
+        .task-info {
+            flex: 1;
+        }
+
+        .task-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--color-dark);
+        }
+
+        .task-time {
+            font-size: 14px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 8px;
+        }
+
+        .task-assigned {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 13px;
+            background: rgba(46, 139, 87, 0.1);
+            padding: 3px 8px;
+            border-radius: 20px;
+            display: inline-block;
+            color: var(--color-primary-dark);
+        }
+
+        .task-check {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .task-check.checked {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .add-task-form {
+            background: rgba(46, 139, 87, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--color-dark);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .btn-add-task {
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            display: block;
+            width: 100%;
+        }
+
+        .btn-add-task:hover {
+            background-color: var(--color-primary-dark);
+        }
+
+        /* Family Section */
+        .family-section {
+            background: linear-gradient(to bottom, var(--color-secondary), var(--color-light));
+        }
+
+        .family-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .family-member {
+            background-color: var(--color-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            text-align: center;
+            padding: 30px 20px;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .family-member:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .member-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 36px;
+            color: white;
+        }
+
+        .family-member h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--color-dark);
+        }
+
+        .tasks p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Games Section */
+        .games-section {
+            background-color: rgba(46, 139, 87, 0.03);
+        }
+
+        .games-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .game-card {
+            background-color: var(--color-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .game-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .game-header {
+            color: var(--color-light);
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .game-body {
+            padding: 25px;
+        }
+
+        .game-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Plant Gallery */
+        .plant-gallery {
+            background-color: var(--color-secondary);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .plant-card {
+            background-color: var(--color-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plant-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .plant-icon {
+            height: 150px;
+            background-color: var(--color-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: var(--color-primary-dark);
+            opacity: 0.8;
+        }
+
+        .plant-info {
+            padding: 25px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plant-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-dark);
+            margin-bottom: 8px;
+        }
+
+        .plant-sci-name {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 14px;
+            display: block;
+        }
+
+        .plant-status {
+            font-size: 13px;
+            padding: 4px 10px;
+            background: rgba(46, 139, 87, 0.1);
+            color: var(--color-primary-dark);
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
+        /* Plant Health Section */
+        .health-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #ddd;
+        }
+
+        .health-section h5 {
+            font-size: 18px;
+            margin: 0 0 15px;
+            color: var(--color-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .health-item {
+            margin-bottom: 15px;
+        }
+
+        .health-title {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            color: #c0392b;
+            margin-bottom: 5px;
+        }
+
+        .health-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .health-prevention {
+            background-color: rgba(46, 139, 87, 0.08);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: var(--color-accent);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--color-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a i {
+            width: 20px;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            color: var(--color-light);
+            transition: var(--transition);
+            font-size: 18px;
+        }
+
+        .social-links a:hover {
+            background-color: var(--color-primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .month-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+
+            .nav-links {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 5px 10px;
+            }
+
+            .hero {
+                padding: 80px 0 60px;
+            }
+
+            .hero-quote {
+                font-size: 22px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+            }
+
+            .id-container {
+                flex-direction: column;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .search-box button {
+                width: 100%;
+            }
+
+            .month-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .calendar-day-minimal {
+                padding: 5px 0;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-seedling"></i>
+                    EcoAmor
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#identify">Identificar</a></li>
+                    <li><a href="#calendar">Calendario</a></li>
+                    <li><a href="#family">Familia</a></li>
+                    <li><a href="#plants">Plantas</a></li>
+                    <li><a href="#games">Juegos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-quote">
+                    "Nuestro amor es raíz de volcán y flor del alma: sólo nace donde la tierra aún recuerda"
+                </div>
+                <h1>Cultiva vida, cultiva familia</h1>
+                <p>Conecta con la naturaleza y tu familia a través del cuidado de plantas mexicanas. Identifica especies endémicas, organiza tareas familiares y aprende juntos.</p>
+                <a href="#identify" class="btn">
+                    <i class="fas fa-camera"></i> Identificar planta
+                </a>
+                <a href="#calendar" class="btn btn-outline">
+                    <i class="fas fa-calendar-alt"></i> Calendario familiar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Nuestras Herramientas</h2>
+            <p class="section-subtitle">Diseñadas para conectar a tu familia con la naturaleza y crear rutinas significativas juntos</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Identificación Botánica</h3>
+                    <p>Reconoce plantas mexicanas con nuestra tecnología avanzada y aprende sobre sus cuidados específicos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Calendario Familiar</h3>
+                    <p>Organiza y distribuye las tareas de cuidado entre todos los miembros de tu familia.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Enciclopedia Mexicana</h3>
+                    <p>Accede a información detallada sobre plantas endémicas de México y su importancia ecológica.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Juegos Educativos</h3>
+                    <p>Actividades interactivas para que toda la familia aprenda sobre botánica mientras se divierte.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plant Identification -->
+    <section class="section plant-id" id="identify">
+        <div class="container">
+            <h2 class="section-title">Identificador de Plantas</h2>
+            <p class="section-subtitle">Busca por nombre o sube una foto para identificar tu planta y conocer sus cuidados</p>
+            
+            <!-- Search Section -->
+            <div class="search-section">
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="plant-search" placeholder="Busca por nombre (ej. Dalia, Cempasúchil, Maguey...)">
+                        <button class="btn" id="search-btn">
+                            <i class="fas fa-search"></i> Buscar
+                        </button>
+                    </div>
+                    <div class="search-suggestions" id="suggestions">
+                        <!-- Suggestions will be populated by JS -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="id-container">
+                <div class="id-image">
+                    <div class="id-image-preview">
+                        <img id="preview-img" src="" alt="Previsualización">
+                        <div class="id-image-placeholder">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Sube una imagen o arrástrala aquí</p>
+                            <p class="small">Formatos: JPG, PNG (Máx. 5MB)</p>
+                        </div>
+                    </div>
+                    <div class="id-actions">
+                        <button class="btn btn-secondary" id="upload-btn">
+                            <i class="fas fa-upload"></i> Subir imagen
+                        </button>
+                        <button class="btn btn-secondary" id="camera-btn">
+                            <i class="fas fa-camera"></i> Tomar foto
+                        </button>
+                    </div>
+                    <input type="file" id="file-input" accept="image/*" style="display: none;">
+                    <div class="loading" id="loading">
+                        <div class="loading-spinner"></div>
+                        <p>Analizando tu planta...</p>
+                    </div>
+                </div>
+                <div class="id-results">
+                    <div class="result-card">
+                        <h4><i class="fas fa-seedling"></i> <span id="plant-name">Esperando identificación</span></h4>
+                        <span class="plant-sci-name" id="sci-name">Busca por nombre o sube una imagen</span>
+                        <p id="plant-desc">Nuestro sistema analizará tu búsqueda y te proporcionará información detallada sobre la especie de planta.</p>
+                        <div class="care-tips">
+                            <h5><i class="fas fa-tint"></i> Cuidados esenciales</h5>
+                            <ul id="care-list">
+                                <li>La información de cuidados aparecerá aquí</li>
+                            </ul>
+                        </div>
+                        <div class="health-section" id="health-section" style="display: none;">
+                            <h5><i class="fas fa-heartbeat"></i> Salud de la Planta</h5>
+                            <div id="health-content">
+                                <!-- Health information will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section class="section" id="calendar">
+        <div class="container">
+            <h2 class="section-title">Calendario Familiar 2025</h2>
+            <p class="section-subtitle">Planifica el cuidado de tus plantas con tu familia durante todo el año</p>
+            
+            <div class="minimal-calendar">
+                <div class="calendar-header-minimal">
+                    <h3>Calendario 2025</h3>
+                    <div class="calendar-nav-minimal">
+                        <button id="prev-year"><i class="fas fa-chevron-left"></i></button>
+                        <button id="next-year"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                
+                <div class="month-grid">
+                    <!-- Generaremos los meses con JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Tareas -->
+    <div class="task-modal" id="taskModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="task-header">
+                <i class="fas fa-tasks"></i>
+                <h3 id="modalDate">Tareas para 1 de Enero, 2025</h3>
+            </div>
+            
+            <div class="task-list" id="taskList">
+                <!-- Tareas se generarán dinámicamente -->
+            </div>
+            
+            <div class="add-task-form">
+                <h4><i class="fas fa-plus-circle"></i> Agregar nueva tarea</h4>
+                <div class="form-group">
+                    <label for="taskTitle">Título de la tarea</label>
+                    <input type="text" id="taskTitle" placeholder="Ej: Regar las orquídeas">
+                </div>
+                
+                <div class="form-group">
+                    <label for="taskDescription">Descripción</label>
+                    <textarea id="taskDescription" rows="2" placeholder="Detalles de la tarea"></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="taskTime">Hora</label>
+                        <input type="time" id="taskTime">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="taskAssignee">Asignar a</label>
+                        <select id="taskAssignee">
+                            <option value="todos">Toda la familia</option>
+                            <option value="papa">Papá</option>
+                            <option value="mama">Mamá</option>
+                            <option value="hermano">Hermano</option>
+                            <option value="hermana">Hermana</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button class="btn-add-task" id="addTaskBtn">
+                    <i class="fas fa-plus"></i> Agregar Tarea
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Family Section -->
+    <section class="section family-section" id="family">
+        <div class="container">
+            <h2 class="section-title">Tu Familia EcoAmor</h2>
+            <p class="section-subtitle">Asigna roles y responsabilidades para cuidar juntos de vuestras plantas</p>
+            <div class="family-grid">
+                <div class="family-member">
+                    <div class="member-icon" style="background-color: var(--color-family-papa);">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Papá</h3>
+                    <div class="tasks">
+                        <p><i class="fas fa-tasks"></i> Responsable de podar y trasplantar</p>
+                        <p><i class="fas fa-seedling"></i> Plantas asignadas: Palmeras, Cactus</p>
+                        <p><i class="fas fa-trophy"></i> Logros: 12 tareas completadas</p>
+                    </div>
+                </div>
+                <div class="family-member">
+                    <div class="member-icon" style="background-color: var(--color-family-mama);">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Mamá</h3>
+                    <div class="tasks">
+                        <p><i class="fas fa-tasks"></i> Responsable de regar y fertilizar</p>
+                        <p><i class="fas fa-seedling"></i> Plantas asignadas: Orquídeas, Suculentas</p>
+                        <p><i class="fas fa-trophy"></i> Logros: 18 tareas completadas</p>
+                    </div>
+                </div>
+                <div class="family-member">
+                    <div class="member-icon" style="background-color: var(--color-family-hermano);">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Hermano</h3>
+                    <div class="tasks">
+                        <p><i class="fas fa-tasks"></i> Responsable de limpiar hojas</p>
+                        <p><i class="fas fa-seedling"></i> Plantas asignadas: Helechos, Aloe Vera</p>
+                        <p><i class="fas fa-trophy"></i> Logros: 8 tareas completadas</p>
+                    </div>
+                </div>
+                <div class="family-member">
+                    <div class="member-icon" style="background-color: var(--color-family-hermana);">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Hermana</h3>
+                    <div class="tasks">
+                        <p><i class="fas fa-tasks"></i> Responsable de control de plagas</p>
+                        <p><i class="fas fa-seedling"></i> Plantas asignadas: Flores, Hierbas</p>
+                        <p><i class="fas fa-trophy"></i> Logros: 10 tareas completadas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="section games-section" id="games">
+        <div class="container">
+            <h2 class="section-title">Juegos Familiares</h2>
+            <p class="section-subtitle">Aprende sobre el cuidado de plantas mientras juegas en familia</p>
+            <div class="games-container">
+                <div class="game-card">
+                    <div class="game-header" style="background-color: #4A7B9D;">
+                        <h3>PlantDefenders</h3>
+                        <p>Protege tus plantas de plagas y enfermedades</p>
+                    </div>
+                    <div class="game-body">
+                        <p>En este juego cooperativo, cada miembro de la familia asume un rol para proteger las plantas de amenazas. Papá poda las ramas enfermas, mamá aplica remedios naturales, hermano elimina insectos y hermana fortalece las defensas.</p>
+                        <div class="game-stats">
+                            <span><i class="fas fa-users"></i> 2-4 jugadores</span>
+                            <span><i class="fas fa-clock"></i> 15-30 min</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-header" style="background-color: #D67AB1;">
+                        <h3>EcoTrivia</h3>
+                        <p>Concurso de preguntas sobre plantas mexicanas</p>
+                    </div>
+                    <div class="game-body">
+                        <p>Pon a prueba tus conocimientos sobre plantas endémicas de México. Responde preguntas sobre cuidados, propiedades medicinales y características únicas de especies como el Peyote Meco, la Biznaga y la Orquídea Tigrillo.</p>
+                        <div class="game-stats">
+                            <span><i class="fas fa-users"></i> 2-6 jugadores</span>
+                            <span><i class="fas fa-clock"></i> 10-20 min</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-header" style="background-color: #5DA271;">
+                        <h3>Mi Jardín Virtual</h3>
+                        <p>Crea y mantén un jardín digital en familia</p>
+                    </div>
+                    <div class="game-body">
+                        <p>Cada miembro de la familia se encarga de diferentes plantas virtuales que requieren cuidados diarios. Al completar rutinas reales de cuidado de plantas, desbloquean nuevas especies y accesorios para su jardín virtual.</p>
+                        <div class="game-stats">
+                            <span><i class="fas fa-users"></i> 1-4 jugadores</span>
+                            <span><i class="fas fa-clock"></i> 5 min/día</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plant Gallery -->
+    <section class="section plant-gallery" id="plants">
+        <div class="container">
+            <h2 class="section-title">Plantas Endémicas de México</h2>
+            <p class="section-subtitle">Tesoros botánicos únicos de nuestro país que debemos conocer y proteger</p>
+            <div class="gallery-container">
+                <!-- Plantas solicitadas adicionales -->
+                <div class="plant-card">
+                    <div class="plant-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="plant-info">
+                        <div class="plant-name">Orquídea Tigrillo de las Nubes</div>
+                        <span class="plant-sci-name">Rossioglossum williamsianum</span>
+                        <p>Orquídea endémica de bosques nubosos mexicanos con flores espectaculares que muestran patrones similares a la piel de tigre.</p>
+                        <span class="plant-status">En peligro de extinción</span>
+                    </div>
+                </div>
+                <div class="plant-card">
+                    <div class="plant-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="plant-info">
+                        <div class="plant-name">Palma de Guadalupe</div>
+                        <span class="plant-sci-name">Brahea edulis</span>
+                        <p>Endémica de la Isla Guadalupe. Sus frutos son comestibles y fuente alimenticia importante para la fauna local.</p>
+                        <span class="plant-status">En peligro de extinción</span>
+                    </div>
+                </div>
+                <div class="plant-card">
+                    <div class="plant-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="plant-info">
+                        <div class="plant-name">Maguey de Nizanda</div>
+                        <span class="plant-sci-name">Agave nizandensis</span>
+                        <p>Pequeño agave endémico de Oaxaca que crece en laderas rocosas con suelos poco profundos.</p>
+                        <span class="plant-status">En peligro crítico</span>
+                    </div>
+                </div>
+                <div class="plant-card">
+                    <div class="plant-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="plant-info">
+                        <div class="plant-name">Peyote Meco</div>
+                        <span class="plant-sci-name">Pelecyphora aselliformis</span>
+                        <p>Cactus pequeño endémico de San Luis Potosí con forma de erizo marino y flores púrpura brillante.</p>
+                        <span class="plant-status">Especie protegida</span>
+                    </div>
+                </div>
+                <div class="plant-card">
+                    <div class="plant-icon">
+                        <i class="fas fa-pagelines"></i>
+                    </div>
+                    <div class="plant-info">
+                        <div class="plant-name">Biznaga Bola de Hilo</div>
+                        <span class="plant-sci-name">Mammillaria bombycina</span>
+                        <p>Cactus globular endémico de México con espinas blancas como hilo y flores rosadas en corona.</p>
+                        <span class="plant-status">Vulnerable</span>
+                    </div>
+                </div>
+                <div class="plant-card">
+                    <div class="plant-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="plant-info">
+                        <div class="plant-name">Palma de Todos Santos</div>
+                        <span class="plant-sci-name">Brahea brandegeei</span>
+                        <p>Palmera endémica de Baja California Sur con hojas en forma de abanico y tronco robusto.</p>
+                        <span class="plant-status">En peligro crítico</span>
+                    </div>
+                </div>
+                <div class="plant-card">
+                    <div class="plant-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="plant-info">
+                        <div class="plant-name">Falso Peyote</div>
+                        <span class="plant-sci-name">Astrophytum asterias</span>
+                        <p>Cactus en forma de estrella sin espinas, endémico de Tamaulipas y en peligro por colección ilegal.</p>
+                        <span class="plant-status">En peligro crítico</span>
+                    </div>
+                </div>
+                <div class="plant-card">
+                    <div class="plant-icon">
+                        <i class="fas fa-vine"></i>
+                    </div>
+                    <div class="plant-info">
+                        <div class="plant-name">Vainilla</div>
+                        <span class="plant-sci-name">Vanilla planifolia</span>
+                        <p>Orquídea trepadora originaria de México, fuente de la vainilla natural, cultivada desde época prehispánica.</p>
+                        <span class="plant-status">Cultivo tradicional</span>
+                    </div>
+                </div>
+                <div class="plant-card">
+                    <div class="plant-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="plant-info">
+                        <div class="plant-name">Abeto de Hickel</div>
+                        <span class="plant-sci-name">Abies hickelii</span>
+                        <p>Conífera endémica de los bosques de niebla de Oaxaca y Chiapas, con follaje verde oscuro y conos púrpura.</p>
+                        <span class="plant-status">En peligro</span>
+                    </div>
+                </div>
+                <div class="plant-card">
+                    <div class="plant-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="plant-info">
+                        <div class="plant-name">Musgo de Sierra Juárez</div>
+                        <span class="plant-sci-name">Sphagnum mexicanum</span>
+                        <p>Musgo endémico de las montañas de Oaxaca, fundamental para la retención de agua en ecosistemas boscosos.</p>
+                        <span class="plant-status">Vulnerable</span>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn"><i class="fas fa-book"></i> Explorar todas las plantas</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>EcoAmor</h3>
+                    <p style="color: #bbb; margin-bottom: 20px;">Conectando familias con la naturaleza a través del cuidado de plantas y la educación ambiental.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Explorar</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-home"></i> Inicio</a></li>
+                        <li><a href="#identify"><i class="fas fa-camera"></i> Identificar plantas</a></li>
+                        <li><a href="#calendar"><i class="fas fa-calendar-alt"></i> Calendario familiar</a></li>
+                        <li><a href="#plants"><i class="fas fa-seedling"></i> Plantas endémicas</a></li>
+                        <li><a href="#games"><i class="fas fa-gamepad"></i> Juegos educativos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-book"></i> Guía de cuidados</a></li>
+                        <li><a href="#"><i class="fas fa-calendar-day"></i> Calendario de siembra</a></li>
+                        <li><a href="#"><i class="fas fa-book-open"></i> Manual de jardinería</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> Conservación en México</a></li>
+                        <li><a href="#"><i class="fas fa-child"></i> Actividades para niños</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-envelope"></i> info@ecoamor.com</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> +52 55 1234 5678</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Ciudad de México</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 EcoAmor. Todos los derechos reservados. | Protegiendo nuestro patrimonio botánico
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Base de datos ampliada de plantas mexicanas
+        const mexicanPlants = [
+            {
+                name: "Orquídea Tigrillo de las Nubes",
+                sciName: "Rossioglossum williamsianum",
+                desc: "Orquídea epífita endémica de México con flores espectaculares que muestran patrones similares a la piel de tigre. Crece en bosques nubosos entre 1,500 y 2,000 metros de altitud. Esta especie es exclusiva de la Sierra Madre Oriental y está considerada en peligro de extinción debido a la pérdida de hábitat.",
+                careTips: [
+                    "Luz: Indirecta brillante, sin sol directo",
+                    "Riego: Moderado cada 7-10 días, reducir en invierno",
+                    "Humedad: Alta (60-80%), usar bandeja con guijarros",
+                    "Temperatura: 18-25°C durante el día, 13-16°C por noche",
+                    "Sustrato: Corteza de pino con musgo sphagnum"
+                ],
+                healthIssues: [
+                    {
+                        name: "Manchas foliares",
+                        description: "Manchas oscuras en las hojas causadas por hongos debido al exceso de humedad.",
+                        prevention: "Mejorar la circulación de aire, evitar mojar las hojas al regar, aplicar fungicida natural como bicarbonato de sodio diluido."
+                    },
+                    {
+                        name: "Pudrición de raíces",
+                        description: "Raíces oscuras y blandas debido al exceso de riego.",
+                        prevention: "Asegurar buen drenaje, dejar secar el sustrato entre riegos, usar macetas con agujeros de drenaje."
+                    }
+                ],
+                keywords: ["orquídea", "tigrillo", "nubes", "rossioglossum"]
+            },
+            {
+                name: "Peyote Meco",
+                sciName: "Pelecyphora aselliformis",
+                desc: "Cactus pequeño endémico de San Luis Potosí. Con forma de erizo marino y flores púrpura brillante que aparecen en primavera. Crece en suelos calcáreos. Esta especie es conocida por su crecimiento extremadamente lento y su valor cultural para comunidades indígenas.",
+                careTips: [
+                    "Luz: Pleno sol o sombra parcial",
+                    "Riego: Escaso, cada 3-4 semanas en verano, casi nada en invierno",
+                    "Sustrato: Muy poroso con arena gruesa y piedra pómez",
+                    "Temperatura: Tolera hasta -4°C si está seco",
+                    "Fertilización: Mensual en primavera/verano con bajo nitrógeno"
+                ],
+                healthIssues: [
+                    {
+                        name: "Cochinillas",
+                        description: "Insectos algodonosos que succionan la savia, debilitando la planta.",
+                        prevention: "Inspeccionar regularmente, eliminar manualmente con alcohol isopropílico, aplicar jabón insecticida."
+                    },
+                    {
+                        name: "Quemaduras solares",
+                        description: "Manchas blancas o marrones en la superficie debido a exposición solar intensa.",
+                        prevention: "Proteger del sol directo en horas pico, aclimatar gradualmente a mayor exposición solar."
+                    }
+                ],
+                keywords: ["peyote", "meco", "cactus", "pelecyphora"]
+            },
+            {
+                name: "Palma de Guadalupe",
+                sciName: "Brahea edulis",
+                desc: "Palmera endémica de la Isla Guadalupe. Sus frutos son comestibles y una importante fuente alimenticia para la fauna local. Puede alcanzar hasta 10 metros de altura. Esta especie es fundamental para el ecosistema de la isla y está protegida.",
+                careTips: [
+                    "Luz: Pleno sol",
+                    "Riego: Moderado, tolera sequía una vez establecida",
+                    "Sustrato: Bien drenado, incluso rocoso",
+                    "Temperatura: Tolera hasta -5°C",
+                    "Crecimiento: Lento, requiere paciencia"
+                ],
+                healthIssues: [
+                    {
+                        name: "Deficiencia de potasio",
+                        description: "Puntas de hojas quemadas y amarillamiento en hojas viejas.",
+                        prevention: "Fertilizar con abono específico para palmeras rico en potasio, aplicar sulfato de potasio según indicaciones."
+                    },
+                    {
+                        name: "Picudo rojo",
+                        description: "Plaga grave que perfora el tronco y destruye la palmera desde dentro.",
+                        prevention: "Inspección periódica, trampas con feromonas, tratamiento preventivo con nematodos entomopatógenos."
+                    }
+                ],
+                keywords: ["palma", "guadalupe", "brahea"]
+            },
+            {
+                name: "Maguey de Nizanda",
+                sciName: "Agave nizandensis",
+                desc: "Pequeño agave endémico de Oaxaca. Crece en laderas rocosas con suelos poco profundos. Florece después de 10-15 años produciendo una inflorescencia espectacular. Esta especie está en peligro crítico con menos de 200 individuos en estado silvestre.",
+                careTips: [
+                    "Luz: Pleno sol a sombra ligera",
+                    "Riego: Escaso, muy resistente a sequía",
+                    "Sustrato: Extremadamente bien drenado",
+                    "Temperatura: Tolera heladas ligeras",
+                    "Nota: Florece una vez en su vida (monocárpica)"
+                ],
+                healthIssues: [
+                    {
+                        name: "Podredumbre de la corona",
+                        description: "Parte central de la planta se vuelve blanda y oscura por exceso de humedad.",
+                        prevention: "Evitar riego excesivo, asegurar drenaje perfecto, no dejar agua estancada en la roseta."
+                    },
+                    {
+                        name: "Gusano del agave",
+                        description: "Larvas que perforan el corazón de la planta destruyendo tejidos internos.",
+                        prevention: "Control biológico con nematodos, aplicar Bacillus thuringiensis, inspeccionar regularmente."
+                    }
+                ],
+                keywords: ["maguey", "nizanda", "agave"]
+            },
+            {
+                name: "Falso Peyote",
+                sciName: "Astrophytum asterias",
+                desc: "Cactus en forma de estrella sin espinas. Endémico de Tamaulipas y en peligro por colección ilegal. Florece con flores amarillas en primavera. Especie protegida por la NOM-059-SEMARNAT-2010.",
+                careTips: [
+                    "Luz: Pleno sol",
+                    "Riego: Muy escaso, similar a desierto",
+                    "Sustrato: Arenoso con buen drenaje",
+                    "Temperatura: No tolera heladas fuertes",
+                    "Protección: Especie protegida, no recolectar silvestre"
+                ],
+                healthIssues: [
+                    {
+                        name: "Araña roja",
+                        description: "Ácaros que causan decoloración y manchas amarillas en la superficie.",
+                        prevention: "Aumentar humedad ambiental, aplicar acaricidas naturales como aceite de neem, mantener buena ventilación."
+                    },
+                    {
+                        name: "Hinchazón por exceso de agua",
+                        description: "Tejidos translúcidos y blandos por absorción excesiva de agua.",
+                        prevention: "Reducir riego, asegurar sustrato con buen drenaje, evitar riego en invierno."
+                    }
+                ],
+                keywords: ["falso peyote", "astrophytum", "cactus", "estrella"]
+            },
+            {
+                name: "Vainilla",
+                sciName: "Vanilla planifolia",
+                desc: "Orquídea trepadora originaria de México. Fuente de la vainilla natural, cultivada desde la época prehispánica. Los totonacas de Veracruz fueron los primeros en domesticar esta planta.",
+                careTips: [
+                    "Luz: Sombra parcial, nunca sol directo intenso",
+                    "Riego: Regular, mantener húmedo pero no encharcado",
+                    "Sustrato: Rico en materia orgánica, con soporte para trepar",
+                    "Humedad: Alta, ideal para invernaderos húmedos",
+                    "Polinización: Requiere polinización manual para producir frutos"
+                ],
+                healthIssues: [
+                    {
+                        name: "Antracnosis",
+                        description: "Manchas oscuras en hojas y tallos causadas por hongos.",
+                        prevention: "Podar partes afectadas, mejorar circulación de aire, aplicar fungicida de cobre."
+                    },
+                    {
+                        name: "Clorosis",
+                        description: "Amarillamiento de hojas por deficiencia de nutrientes.",
+                        prevention: "Fertilizar con abono balanceado, verificar pH del suelo (ideal 6.0-7.0), aplicar quelatos de hierro."
+                    }
+                ],
+                keywords: ["vainilla", "vanilla", "orquídea"]
+            },
+            {
+                name: "Cempasúchil",
+                sciName: "Tagetes erecta",
+                desc: "Flor tradicional mexicana, conocida como flor de muertos. De color amarillo o naranja intenso, se usa en las ofrendas del Día de Muertos. México es el principal productor mundial.",
+                careTips: [
+                    "Luz: Pleno sol",
+                    "Riego: Moderado, evitar encharcamientos",
+                    "Sustrato: Bien drenado, fértil",
+                    "Temperatura: Cálida, no tolera heladas",
+                    "Usos: Ornamental y ceremonial"
+                ],
+                healthIssues: [
+                    {
+                        name: "Mildiu velloso",
+                        description: "Manchas amarillas en hojas con vellosidad gris en el envés.",
+                        prevention: "Riego al suelo sin mojar hojas, aplicar fungicidas preventivos, rotación de cultivos."
+                    },
+                    {
+                        name: "Mosca blanca",
+                        description: "Pequeños insectos que debilitan la planta y transmiten virus.",
+                        prevention: "Trampas amarillas adhesivas, control biológico con Encarsia formosa, aplicación de jabón potásico."
+                    }
+                ],
+                keywords: ["cempasúchil", "flor de muertos", "tagetes"]
+            },
+            {
+                name: "Dalia",
+                sciName: "Dahlia pinnata",
+                desc: "Flor nacional de México. Existen más de 40 especies en el país. Sus flores son muy vistosas y variadas. Fue llevada a Europa en el siglo XVIII donde se crearon numerosos híbridos.",
+                careTips: [
+                    "Luz: Pleno sol a sombra parcial",
+                    "Riego: Regular, mantener suelo ligeramente húmedo",
+                    "Sustrato: Rico en materia orgánica, bien drenado",
+                    "Temperatura: Templada, proteger de heladas",
+                    "Multiplicación: Por tubérculos en primavera"
+                ],
+                healthIssues: [
+                    {
+                        name: "Oídio",
+                        description: "Polvo blanco en hojas y tallos causado por hongos.",
+                        prevention: "Evitar humedad excesiva, aplicar azufre en polvo, podar partes afectadas."
+                    },
+                    {
+                        name: "Babosas y caracoles",
+                        description: "Daños en hojas y flores durante la noche.",
+                        prevention: "Barreras de ceniza o cáscaras de huevo, trampas de cerveza, recolección manual nocturna."
+                    }
+                ],
+                keywords: ["dalia", "flor nacional", "dahlia"]
+            },
+            {
+                name: "Nochebuena",
+                sciName: "Euphorbia pulcherrima",
+                desc: "Planta emblemática de la Navidad en México. Sus brácteas rojas (no flores) son muy decorativas. Originaria de Taxco, Guerrero, donde crece como arbusto perenne.",
+                careTips: [
+                    "Luz: Indirecta brillante",
+                    "Riego: Cuando el sustrato esté seco al tacto",
+                    "Temperatura: 16-22°C ideal, no tolera frío extremo",
+                    "Floración: Requiere noches largas para florecer",
+                    "Precaución: Savia lechosa puede irritar la piel"
+                ],
+                healthIssues: [
+                    {
+                        name: "Caída de hojas",
+                        description: "Pérdida repentina de hojas por corrientes de aire o cambios bruscos.",
+                        prevention: "Evitar corrientes de aire, mantener temperatura estable, no exponer a calefacción directa."
+                    },
+                    {
+                        name: "Mosca del sustrato",
+                        description: "Pequeñas moscas que indican exceso de humedad en el sustrato.",
+                        prevention: "Dejar secar más entre riegos, usar trampas amarillas, aplicar nematodos beneficiosos al sustrato."
+                    }
+                ],
+                keywords: ["nochebuena", "navidad", "euphorbia"]
+            },
+            {
+                name: "Zacate Limón",
+                sciName: "Cymbopogon citratus",
+                desc: "Planta aromática usada en medicina tradicional y gastronomía mexicana. Crece en regiones tropicales y es fundamental para la preparación de tés e infusiones.",
+                careTips: [
+                    "Luz: Pleno sol",
+                    "Riego: Moderado, tolera sequía",
+                    "Sustrato: Bien drenado",
+                    "Cosecha: Cortar hojas exteriores según necesidad",
+                    "Propagación: Por división de matas"
+                ],
+                healthIssues: [
+                    {
+                        name: "Roya",
+                        description: "Pústulas anaranjadas en el envés de las hojas causadas por hongos.",
+                        prevention: "Espaciar plantas para buena circulación de aire, evitar riego por aspersión, aplicar fungicidas preventivos."
+                    },
+                    {
+                        name: "Deficiencia de nitrógeno",
+                        description: "Hojas pálidas y crecimiento lento.",
+                        prevention: "Fertilizar con compost o estiércol bien descompuesto, aplicar fertilizante rico en nitrógeno en primavera."
+                    }
+                ],
+                keywords: ["zacate", "limón", "hierba", "té"]
+            },
+            {
+                name: "Biznaga Bola de Hilo",
+                sciName: "Mammillaria bombycina",
+                desc: "Cactus globular endémico de México con espinas blancas como hilo y flores rosadas en corona. Crece en zonas áridas del centro del país.",
+                careTips: [
+                    "Luz: Pleno sol",
+                    "Riego: Escaso, cada 3-4 semanas en verano",
+                    "Sustrato: Muy drenante, arena y gravilla",
+                    "Temperatura: Tolera heladas ligeras si está seco",
+                    "Floración: Primavera a verano"
+                ],
+                healthIssues: [
+                    {
+                        name: "Cochinilla algodonosa",
+                        description: "Insectos blancos que se agrupan en las areolas.",
+                        prevention: "Aplicar alcohol con pincel, usar insecticida sistémico, mantener planta limpia."
+                    },
+                    {
+                        name: "Podredumbre basal",
+                        description: "Base del cactus se oscurece y ablanda.",
+                        prevention: "Evitar exceso de agua, mejorar drenaje, cortar parte sana y volver a enraizar."
+                    }
+                ],
+                keywords: ["biznaga", "bola de hilo", "cactus", "mammillaria"]
+            },
+            {
+                name: "Musgo de Sierra Juárez",
+                sciName: "Sphagnum mexicanum",
+                desc: "Musgo endémico de las montañas de Oaxaca, fundamental para la retención de agua en ecosistemas boscosos. Forma densas capas en zonas húmedas.",
+                careTips: [
+                    "Luz: Sombra o luz filtrada",
+                    "Riego: Mantener constantemente húmedo",
+                    "Sustrato: Turba ácida o sustrato para orquídeas",
+                    "Humedad: Muy alta (80-90%)",
+                    "Temperatura: Fresca, 10-20°C ideal"
+                ],
+                healthIssues: [
+                    {
+                        name: "Desecación",
+                        description: "Se seca y pierde vitalidad por falta de humedad.",
+                        prevention: "Mantener alta humedad ambiental, regar con agua de lluvia o destilada, nebulizar diariamente."
+                    },
+                    {
+                        name: "Algas invasoras",
+                        description: "Crecimiento de algas verdes que cubren el musgo.",
+                        prevention: "Mejorar circulación de aire, reducir nutrientes en agua, controlar iluminación."
+                    }
+                ],
+                keywords: ["musgo", "sierra juárez", "sphagnum"]
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Referencias a elementos del DOM
+            const fileInput = document.getElementById('file-input');
+            const uploadBtn = document.getElementById('upload-btn');
+            const cameraBtn = document.getElementById('camera-btn');
+            const previewImg = document.getElementById('preview-img');
+            const placeholder = document.querySelector('.id-image-placeholder');
+            const loading = document.getElementById('loading');
+            const plantName = document.getElementById('plant-name');
+            const sciName = document.getElementById('sci-name');
+            const plantDesc = document.getElementById('plant-desc');
+            const careList = document.getElementById('care-list');
+            const plantSearch = document.getElementById('plant-search');
+            const searchBtn = document.getElementById('search-btn');
+            const suggestions = document.getElementById('suggestions');
+            const healthSection = document.getElementById('health-section');
+            const healthContent = document.getElementById('health-content');
+            const monthGrid = document.querySelector('.month-grid');
+            const taskModal = document.getElementById('taskModal');
+            const closeModal = document.getElementById('closeModal');
+            const modalDate = document.getElementById('modalDate');
+            const taskList = document.getElementById('taskList');
+            const addTaskBtn = document.getElementById('addTaskBtn');
+            const taskTitle = document.getElementById('taskTitle');
+            const taskDescription = document.getElementById('taskDescription');
+            const taskTime = document.getElementById('taskTime');
+            const taskAssignee = document.getElementById('taskAssignee');
+            
+            // Almacenamiento de tareas (simulado)
+            let tasks = JSON.parse(localStorage.getItem('ecoamor-tasks')) || {};
+            let selectedDate = null;
+            
+            // Nombres de los meses y días
+            const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", 
+                              "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            
+            const dayNames = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+            
+            // Generar calendario para 2025
+            function generateCalendar() {
+                const year = 2025;
+                monthGrid.innerHTML = '';
+                
+                for (let month = 0; month < 12; month++) {
+                    const firstDay = new Date(year, month, 1);
+                    const lastDay = new Date(year, month + 1, 0);
+                    const daysInMonth = lastDay.getDate();
+                    const startDay = firstDay.getDay();
+                    
+                    const monthCard = document.createElement('div');
+                    monthCard.className = 'month-card';
+                    
+                    const monthHeader = document.createElement('div');
+                    monthHeader.className = 'month-header';
+                    monthHeader.textContent = monthNames[month];
+                    
+                    const daysGrid = document.createElement('div');
+                    daysGrid.className = 'month-grid-days';
+                    
+                    // Encabezados de días
+                    dayNames.forEach(day => {
+                        const dayHeader = document.createElement('div');
+                        dayHeader.className = 'day-header';
+                        dayHeader.textContent = day;
+                        daysGrid.appendChild(dayHeader);
+                    });
+                    
+                    // Días vacíos al inicio
+                    for (let i = 0; i < startDay; i++) {
+                        const emptyDay = document.createElement('div');
+                        emptyDay.className = 'calendar-day-minimal';
+                        daysGrid.appendChild(emptyDay);
+                    }
+                    
+                    // Días del mes
+                    for (let day = 1; day <= daysInMonth; day++) {
+                        const dayElement = document.createElement('div');
+                        dayElement.className = 'calendar-day-minimal';
+                        dayElement.textContent = day;
+                        dayElement.dataset.date = `${year}-${month + 1}-${day}`;
+                        
+                        // Marcar fines de semana
+                        const dayOfWeek = new Date(year, month, day).getDay();
+                        if (dayOfWeek === 0 || dayOfWeek === 6) {
+                            dayElement.classList.add('weekend');
+                        }
+                        
+                        // Marcar días con tareas
+                        const dateKey = `${year}-${month + 1}-${day}`;
+                        if (tasks[dateKey] && tasks[dateKey].length > 0) {
+                            dayElement.classList.add('has-tasks');
+                        }
+                        
+                        // Evento para abrir modal de tareas
+                        dayElement.addEventListener('click', function() {
+                            openTaskModal(dateKey);
+                        });
+                        
+                        daysGrid.appendChild(dayElement);
+                    }
+                    
+                    monthCard.appendChild(monthHeader);
+                    monthCard.appendChild(daysGrid);
+                    monthGrid.appendChild(monthCard);
+                }
+            }
+            
+            // Abrir modal de tareas
+            function openTaskModal(dateKey) {
+                selectedDate = dateKey;
+                const dateParts = dateKey.split('-');
+                const dateObj = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+                
+                // Formatear fecha para mostrar
+                const formattedDate = `${dateParts[2]} de ${monthNames[dateObj.getMonth()]}, ${dateParts[0]}`;
+                modalDate.textContent = `Tareas para ${formattedDate}`;
+                
+                // Cargar tareas existentes
+                loadTasks(dateKey);
+                
+                // Mostrar modal
+                taskModal.style.display = 'flex';
+            }
+            
+            // Cargar tareas para una fecha específica
+            function loadTasks(dateKey) {
+                taskList.innerHTML = '';
+                
+                if (!tasks[dateKey] || tasks[dateKey].length === 0) {
+                    taskList.innerHTML = '<p class="no-tasks">No hay tareas programadas para este día.</p>';
+                    return;
+                }
+                
+                tasks[dateKey].forEach((task, index) => {
+                    const taskItem = document.createElement('div');
+                    taskItem.className = 'task-item';
+                    
+                    // Determinar color según asignación
+                    let assigneeColor = '#2E8B57';
+                    let assigneeName = 'Toda la familia';
+                    
+                    switch(task.assignee) {
+                        case 'papa':
+                            assigneeColor = '#4A7B9D';
+                            assigneeName = 'Papá';
+                            break;
+                        case 'mama':
+                            assigneeColor = '#D67AB1';
+                            assigneeName = 'Mamá';
+                            break;
+                        case 'hermano':
+                            assigneeColor = '#5DA271';
+                            assigneeName = 'Hermano';
+                            break;
+                        case 'hermana':
+                            assigneeColor = '#E9A178';
+                            assigneeName = 'Hermana';
+                            break;
+                    }
+                    
+                    taskItem.style.borderLeftColor = assigneeColor;
+                    
+                    taskItem.innerHTML = `
+                        <div class="task-check ${task.completed ? 'checked' : ''}" data-index="${index}">
+                            ${task.completed ? '✓' : ''}
+                        </div>
+                        <div class="task-info">
+                            <div class="task-title">${task.title}</div>
+                            <div class="task-time">
+                                <i class="far fa-clock"></i> ${task.time || 'Sin hora específica'}
+                            </div>
+                            <div class="task-description">${task.description || ''}</div>
+                            <span class="task-assigned" style="background: ${assigneeColor + '20'}; color: ${assigneeColor}">
+                                <i class="fas fa-user"></i> ${assigneeName}
+                            </span>
+                        </div>
+                    `;
+                    
+                    taskList.appendChild(taskItem);
+                });
+                
+                // Añadir eventos a las casillas de verificación
+                document.querySelectorAll('.task-check').forEach(check => {
+                    check.addEventListener('click', function() {
+                        const taskIndex = parseInt(this.dataset.index);
+                        toggleTaskCompletion(dateKey, taskIndex);
+                    });
+                });
+            }
+            
+            // Alternar estado de completado de una tarea
+            function toggleTaskCompletion(dateKey, taskIndex) {
+                tasks[dateKey][taskIndex].completed = !tasks[dateKey][taskIndex].completed;
+                saveTasks();
+                loadTasks(dateKey);
+                updateCalendarDay(dateKey);
+            }
+            
+            // Actualizar indicador de tareas en el día del calendario
+            function updateCalendarDay(dateKey) {
+                const dateParts = dateKey.split('-');
+                const dayElement = document.querySelector(`.calendar-day-minimal[data-date="${dateKey}"]`);
+                
+                if (tasks[dateKey] && tasks[dateKey].length > 0) {
+                    dayElement.classList.add('has-tasks');
+                    
+                    // Verificar si hay tareas pendientes
+                    const hasPendingTasks = tasks[dateKey].some(task => !task.completed);
+                    dayElement.style.backgroundColor = hasPendingTasks ? 'rgba(255, 165, 0, 0.1)' : 'rgba(46, 139, 87, 0.1)';
+                } else {
+                    dayElement.classList.remove('has-tasks');
+                    dayElement.style.backgroundColor = '';
+                }
+            }
+            
+            // Añadir nueva tarea
+            addTaskBtn.addEventListener('click', function() {
+                if (!taskTitle.value.trim()) {
+                    alert('Por favor, ingresa un título para la tarea');
+                    return;
+                }
+                
+                const newTask = {
+                    title: taskTitle.value,
+                    description: taskDescription.value,
+                    time: taskTime.value,
+                    assignee: taskAssignee.value,
+                    completed: false
+                };
+                
+                if (!tasks[selectedDate]) {
+                    tasks[selectedDate] = [];
+                }
+                
+                tasks[selectedDate].push(newTask);
+                saveTasks();
+                loadTasks(selectedDate);
+                updateCalendarDay(selectedDate);
+                
+                // Resetear formulario
+                taskTitle.value = '';
+                taskDescription.value = '';
+                taskTime.value = '';
+                taskAssignee.value = 'todos';
+            });
+            
+            // Guardar tareas en localStorage
+            function saveTasks() {
+                localStorage.setItem('ecoamor-tasks', JSON.stringify(tasks));
+            }
+            
+            // Cerrar modal
+            closeModal.addEventListener('click', function() {
+                taskModal.style.display = 'none';
+            });
+            
+            // Cerrar modal al hacer clic fuera del contenido
+            window.addEventListener('click', function(event) {
+                if (event.target === taskModal) {
+                    taskModal.style.display = 'none';
+                }
+            });
+            
+            // Navegación de años (aunque solo tenemos 2025)
+            document.getElementById('prev-year').addEventListener('click', () => {
+                // Solo para demostración, normalmente cambiaría de año
+                alert('Calendario solo disponible para 2025');
+            });
+            
+            document.getElementById('next-year').addEventListener('click', () => {
+                // Solo para demostración, normalmente cambiaría de año
+                alert('Calendario solo disponible para 2025');
+            });
+            
+            // Evento para subir imagen
+            uploadBtn.addEventListener('click', () => fileInput.click());
+            
+            // Evento para tomar foto
+            cameraBtn.addEventListener('click', function() {
+                alert('Funcionalidad de cámara activada. En una implementación completa, esto accedería a la cámara del dispositivo.');
+            });
+            
+            // Evento cuando se selecciona un archivo
+            fileInput.addEventListener('change', function() {
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+                    
+                    // Mostrar loader
+                    loading.style.display = 'block';
+                    placeholder.style.display = 'none';
+                    
+                    reader.onload = function(e) {
+                        // Mostrar la imagen
+                        previewImg.src = e.target.result;
+                        previewImg.style.display = 'block';
+                        
+                        // Simular identificación de planta después de un retraso
+                        setTimeout(() => {
+                            simulatePlantIdentification();
+                            loading.style.display = 'none';
+                        }, 2000);
+                    }
+                    
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+            
+            // Función para mostrar la información de una planta
+            function displayPlantInfo(plant) {
+                plantName.textContent = plant.name;
+                sciName.textContent = plant.sciName;
+                plantDesc.textContent = plant.desc;
+                
+                // Actualizar la lista de cuidados
+                careList.innerHTML = '';
+                plant.careTips.forEach(tip => {
+                    const li = document.createElement('li');
+                    li.textContent = tip;
+                    careList.appendChild(li);
+                });
+                
+                // Actualizar información de salud
+                healthContent.innerHTML = '';
+                if (plant.healthIssues && plant.healthIssues.length > 0) {
+                    healthSection.style.display = 'block';
+                    plant.healthIssues.forEach(issue => {
+                        const healthItem = document.createElement('div');
+                        healthItem.className = 'health-item';
+                        healthItem.innerHTML = `
+                            <div class="health-title">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                ${issue.name}
+                            </div>
+                            <div class="health-description">${issue.description}</div>
+                            <div class="health-prevention">
+                                <strong>Prevención y cuidado:</strong> ${issue.prevention}
+                            </div>
+                        `;
+                        healthContent.appendChild(healthItem);
+                    });
+                } else {
+                    healthSection.style.display = 'none';
+                }
+            }
+            
+            // Simular identificación de planta
+            function simulatePlantIdentification() {
+                // Seleccionar una planta aleatoriamente
+                const randomIndex = Math.floor(Math.random() * mexicanPlants.length);
+                const plant = mexicanPlants[randomIndex];
+                
+                // Actualizar la información en la interfaz
+                displayPlantInfo(plant);
+            }
+            
+            // Búsqueda de plantas
+            function searchPlant(query) {
+                query = query.toLowerCase().trim();
+                if (!query) return null;
+                
+                // Buscar coincidencia exacta primero
+                const exactMatch = mexicanPlants.find(plant => 
+                    plant.name.toLowerCase() === query || 
+                    plant.sciName.toLowerCase() === query
+                );
+                
+                if (exactMatch) return exactMatch;
+                
+                // Buscar coincidencias parciales
+                const partialMatches = mexicanPlants.filter(plant => 
+                    plant.name.toLowerCase().includes(query) || 
+                    plant.sciName.toLowerCase().includes(query) ||
+                    (plant.keywords && plant.keywords.some(kw => kw.toLowerCase().includes(query)))
+                );
+                
+                return partialMatches.length > 0 ? partialMatches[0] : null;
+            }
+            
+            // Mostrar sugerencias de búsqueda
+            function showSuggestions(query) {
+                suggestions.innerHTML = '';
+                
+                if (!query) {
+                    suggestions.style.display = 'none';
+                    return;
+                }
+                
+                const matchingPlants = mexicanPlants.filter(plant => 
+                    plant.name.toLowerCase().includes(query) || 
+                    plant.sciName.toLowerCase().includes(query) ||
+                    (plant.keywords && plant.keywords.some(kw => kw.toLowerCase().includes(query)))
+                );
+                
+                if (matchingPlants.length > 0) {
+                    matchingPlants.slice(0, 5).forEach(plant => {
+                        const item = document.createElement('div');
+                        item.className = 'suggestion-item';
+                        item.innerHTML = `<i class="fas fa-seedling"></i> ${plant.name} (${plant.sciName})`;
+                        item.addEventListener('click', () => {
+                            plantSearch.value = '';
+                            suggestions.style.display = 'none';
+                            displayPlantInfo(plant);
+                        });
+                        suggestions.appendChild(item);
+                    });
+                    suggestions.style.display = 'block';
+                } else {
+                    suggestions.style.display = 'none';
+                }
+            }
+            
+            // Eventos de búsqueda
+            searchBtn.addEventListener('click', function() {
+                const query = plantSearch.value;
+                const plant = searchPlant(query);
+                
+                if (plant) {
+                    displayPlantInfo(plant);
+                } else {
+                    plantName.textContent = "Planta no encontrada";
+                    sciName.textContent = "Intenta con otro nombre";
+                    plantDesc.textContent = "Lo sentimos, no encontramos información sobre esta planta en nuestra base de datos. Por favor, intenta con otro nombre o sube una imagen.";
+                    careList.innerHTML = '<li>No hay información de cuidados disponible</li>';
+                    healthSection.style.display = 'none';
+                }
+            });
+            
+            plantSearch.addEventListener('input', function() {
+                showSuggestions(this.value.toLowerCase());
+            });
+            
+            plantSearch.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchBtn.click();
+                }
+            });
+            
+            // Cerrar sugerencias al hacer clic fuera
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.search-container')) {
+                    suggestions.style.display = 'none';
+                }
+            });
+            
+            // Inicialización
+            generateCalendar();
+            const randomIndex = Math.floor(Math.random() * mexicanPlants.length);
+            displayPlantInfo(mexicanPlants[randomIndex]);
+        });
+    </script>
+</body>
+</html>
